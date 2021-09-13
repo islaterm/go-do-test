@@ -1,20 +1,12 @@
 <Project Sdk="Godot.NET.Sdk/3.3.0">
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
-        <RootNamespace>Godotest</RootNamespace>
+        <RootNamespace>GoDoTest</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
-        <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
+        <PackageReference Include="NUnit" Version="3.13.2" />
     </ItemGroup>
     <ItemGroup>
         <Content Include=".gitignore" />
-        <Content Include="RiderTestRunner\Runner.tscn" />
-        <Content Include="src\PrimeService\Tests\obj\project.assets.json" />
-        <Content Include="src\PrimeService\Tests\obj\project.nuget.cache" />
-        <Content Include="src\PrimeService\Tests\obj\Tests.csproj.nuget.dgspec.json" />
-        <Content Include="src\PrimeService\Tests\obj\Tests.csproj.nuget.g.props" />
-        <Content Include="src\PrimeService\Tests\obj\Tests.csproj.nuget.g.targets" />
-        <Content Include="src\PrimeService\Tests\Tests.csproj" />
     </ItemGroup>
 </Project>
