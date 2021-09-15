@@ -2,10 +2,11 @@
 
 ## Version 0.x
 
-| Category      | Detail            | Version | Status  |
-| ------------- | ----------------- | ------- | ------- |
-| feat(engine)  | NUnit test runner | 0.0.0.1 | WORKING |
-| feat(funspec) | dropWhile         | 0.0.3.2 | WORKING |
-| feat(funspec) | SourceRef         | 0.0.3.1 | BROKEN  |
-| feat(funspec) | More definitions  | 0.0.2   | WORKING |
-| feat(funspec) | Basic definitions | 0.0.1   | WORKING |
+| Category      | Detail                      | Version   | Status  |
+| ------------- | --------------------------- | --------- | ------- |
+| feat(engine)  | Skeleton for Test attribute | 0.0.5.1 | WORKING |
+| feat(engine)  | NUnit test runner           | 0.0.4.1   | DROPPED |
+| feat(funspec) | dropWhile                   | 0.0.3.2   | WORKING |
+| feat(funspec) | SourceRef                   | 0.0.3.1   | BROKEN  |
+| feat(funspec) | More definitions            | 0.0.2     | WORKING |
+| feat(funspec) | Basic definitions           | 0.0.1     | WORKING |

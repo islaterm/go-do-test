@@ -4,9 +4,9 @@
         <RootNamespace>GoDoTest</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="NUnit" Version="3.13.2" />
+        <Content Include=".gitignore" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include=".gitignore" />
+      <Folder Include="Scenes" />
     </ItemGroup>
 </Project>
