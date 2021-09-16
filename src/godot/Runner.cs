@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using GoDoTest.Core.Spec;
+using GoDoTest.Core.Spec.Scopes;
 using GoDoTest.Matchers;
 using static GoDoTest.Core.Spec.Scopes.FunSpecRootContext;
 using static GoDoTest.Matchers.StringMatcher;
@@ -23,7 +24,9 @@ namespace GoDoTest.godot {
   public class TestRunner : Node {
 
     public override void _Ready() {
-      
+      foreach (var test in AbstractRootContext.Registration) {
+        GD.Print(test.Key);
+      }
     }
   }
 }
