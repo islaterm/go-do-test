@@ -4,10 +4,11 @@
 
 | Category      | Detail                      | Version | Status  |
 | ------------- | --------------------------- | ------- | ------- |
+| feat(engine)  | Root context                | 0.0.6.2 | WORKING |
 | feat(engine)  | Basic test runner           | 0.0.6.1 | WORKING |
 | feat(engine)  | Skeleton for Test attribute | 0.0.5.1 | DROPPED |
 | feat(engine)  | NUnit test runner           | 0.0.4.1 | DROPPED |
-| feat(funspec) | dropWhile                   | 0.0.3.2 | WORKING |
+| feat(funspec) | dropWhile                   | 0.0.3.2 | DROPPED |
 | feat(funspec) | SourceRef                   | 0.0.3.1 | BROKEN  |
 | feat(funspec) | More definitions            | 0.0.2   | WORKING |
 | feat(funspec) | Basic definitions           | 0.0.1   | WORKING |
