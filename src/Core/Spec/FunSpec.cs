@@ -2,10 +2,10 @@
 using GoDoTest.Core.Spec.Scopes;
 
 namespace GoDoTest.Core.Spec {
-  public class FunSpec {
+  public class FunSpec: FunSpecRootContext {
     private FunSpecRootContext _context = FunSpecRootContext.Instance;
-    public FunSpec(Action test) {
-      
+    public FunSpec(Action body) {
+      body();
     }
   }
 }

@@ -4,6 +4,7 @@
 
 | Category      | Detail                      | Version | Status  |
 | ------------- | --------------------------- | ------- | ------- |
+| feat(engine) | Test registration | 0.0.6.3 | WORKING |
 | feat(engine)  | Root context                | 0.0.6.2 | WORKING |
 | feat(engine)  | Basic test runner           | 0.0.6.1 | WORKING |
 | feat(engine)  | Skeleton for Test attribute | 0.0.5.1 | DROPPED |
