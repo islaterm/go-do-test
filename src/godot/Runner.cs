@@ -27,12 +27,12 @@ namespace GoDoTest.godot {
     }
 
     public class ExSpec : FunSpec {
-      public ExSpec(Action test) : base(test) { }
+      public ExSpec(Action body) : base(body) { }
     }
   }
 
   public class TestRunner : Node {
-    protected List<Action> Tests = new List<Action>();
+    protected readonly List<Action> Tests = new List<Action>();
 
     public override void _Ready() {
       foreach (var test in Tests) {
