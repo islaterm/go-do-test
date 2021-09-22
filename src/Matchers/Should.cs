@@ -1,47 +1,54 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using Godot;
 using GoDoTest.Assertions;
-using GoDoTest.Core;
-using GoDoTest.Exceptions;
+using static GoDoTest.Assertions.Equality;
 
 namespace GoDoTest.Matchers {
   public static class Should {
     /// <summary>
     ///   Function that represents the constraint "the value of <c>actual</c> should be <c>expected</c>".
     /// </summary>
-    public static object ShouldBe(this object actual, object expected) {
-      var eq = InvokeMatcher(actual, Is.EqualTo(expected));
-        if (!eq) {
-          // TODO: Test collector
-          throw new AssertionException($"Expected {expected}, but got {actual}");
+    public static void ShouldBe<T>(this object actual, object expected) {
+      // if (actual.GetType()) { }
+
+      switch (expected) {
+        case IMatcher<object> match: {
+          ShouldMatch(actual, match);
+          break;
         }
-        return actual;
+        default: {
+          AssertionCounter.Inc();
+          AreEqual(actual, expected)?.Let(ErrorCollector.CollectOrThrow);
+          break;
+        }
+      }
     }
 
-    private static bool InvokeMatcher(object actual, Func<object,bool> matcher) {
+    private static void ShouldMatch(this object actual, IMatcher<object> matcher) {
       throw new NotImplementedException();
     }
 
-    public static void ShouldBe(this double actual, double expected) { }
+    // private static bool InvokeMatcher(object actual, Func<object, bool> matcher) => throw new NotImplementedException();
 
-    public static void ShouldBe(this int actual, double expected) {
-      InvokeMatcher(actual, Is.EqualTo(expected));
+    public static void ShouldBe(this double actual, double expected, double delta = 1e-10) {
+      var error = AreEqualDouble(actual, expected, delta);
+      AssertionCounter.Inc();
     }
 
-    private static double InvokeMatcher(double value, Func<double, bool> matcher) {
+    public static void ShouldBe(this int actual, double expected) {
+      ((double) actual).ShouldBe(expected, 0);
+    }
+
+    private static double InvokeMatcher(double value, IMatcher<double> matcher) {
       AssertionCounter.Inc();
-      var result = matcher(value);
-      if (!result) {
-        throw new NotImplementedException("InvokeMatcher not implemented.");
-      }
+      var result = matcher.Test(value);
+      throw new NotImplementedException();
+      // if (!result) {
+      //   throw new NotImplementedException("InvokeMatcher not implemented.");
+      // }
+
       return value;
     }
 
-    public static void ShouldMatch<T>(this T expected, Func<T, bool> actual) { }
-  }
-
-  public interface IMatcher {
-    void Test<T>(T value);
+    public static void ShouldMatch<T>(this T expected, IMatcher<T> actual) => throw new NotImplementedException();
   }
 }

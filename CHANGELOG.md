@@ -4,6 +4,7 @@
 
 | Category      | Detail                                    | Version | Status  |
 | ------------- | ----------------------------------------- | ------- | ------- |
+| feat(engine)  | StartWith matcher                         | 0.0.7.1 | WORKING |
 | feat(engine)  | ShouldBe implementation for passing tests | 0.0.6.5 | BROKEN  |
 | feat(engine)  | Should assertion (INCOMPLETE)             | 0.0.6.4 | WORKING |
 | feat(engine)  | Test registration                         | 0.0.6.3 | WORKING |
