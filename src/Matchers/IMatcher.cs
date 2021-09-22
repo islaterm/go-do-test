@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GoDoTest.Matchers {
+﻿namespace GoDoTest.Matchers {
   /// <summary>
   ///   A Matcher is the main abstraction in the assertions library.
   ///   Implementations contain a single function, called <c>Test</c>, which accepts a value of type T and returns an
@@ -19,7 +17,14 @@ namespace GoDoTest.Matchers {
   }
 
   public class MatcherResult {
-    public MatcherResult(bool passed, string failureMessage, string negatedFailureMessage) =>
-      throw new NotImplementedException("MatcherResult constructor not implemented");
+    public readonly string FailureMessage;
+    private readonly string _negatedFailureMessage;
+    public readonly bool Passed;
+
+    public MatcherResult(bool passed, string failureMessage, string negatedFailureMessage) {
+      Passed = passed;
+      FailureMessage = failureMessage;
+      _negatedFailureMessage = negatedFailureMessage;
+    }
   }
 }

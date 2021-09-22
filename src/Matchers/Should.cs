@@ -1,5 +1,6 @@
 ﻿using System;
 using GoDoTest.Assertions;
+using GoDoTest.Exceptions;
 using static GoDoTest.Assertions.Equality;
 
 namespace GoDoTest.Matchers {
@@ -7,25 +8,22 @@ namespace GoDoTest.Matchers {
     /// <summary>
     ///   Function that represents the constraint "the value of <c>actual</c> should be <c>expected</c>".
     /// </summary>
-    public static void ShouldBe<T>(this object actual, object expected) {
-      // if (actual.GetType()) { }
+    // public static void ShouldBe<T>(this object actual, object expected) {
+    //   // if (actual.GetType()) { }
+    //
+    //   switch (expected) {
+    //     case IMatcher<object> match: {
+    //       ShouldMatch(actual, match);
+    //       break;
+    //     }
+    //     default: {
+    //       AssertionCounter.Inc();
+    //       AreEqual(actual, expected)?.Let(ErrorCollector.CollectOrThrow);
+    //       break;
+    //     }
+    //   }
+    // }
 
-      switch (expected) {
-        case IMatcher<object> match: {
-          ShouldMatch(actual, match);
-          break;
-        }
-        default: {
-          AssertionCounter.Inc();
-          AreEqual(actual, expected)?.Let(ErrorCollector.CollectOrThrow);
-          break;
-        }
-      }
-    }
-
-    private static void ShouldMatch(this object actual, IMatcher<object> matcher) {
-      throw new NotImplementedException();
-    }
 
     // private static bool InvokeMatcher(object actual, Func<object, bool> matcher) => throw new NotImplementedException();
 
@@ -49,6 +47,20 @@ namespace GoDoTest.Matchers {
       return value;
     }
 
-    public static void ShouldMatch<T>(this T expected, IMatcher<T> actual) => throw new NotImplementedException();
+    // public static void ShouldMatch(this object actual, IMatcher<object> expected) => InvokeMatcher(actual, expected);
+
+    public static void ShouldMatch(this string actual, StringMatcher matcher) {
+      InvokeStringMatcher(actual, matcher);
+    }
+
+    private static string InvokeStringMatcher(string actual, StringMatcher matcher) {
+      AssertionCounter.Inc();
+      var result = matcher.Test(actual);
+      if (!result.Passed) {
+        ErrorCollector.CollectOrThrow(Result.Failure(result.FailureMessage));
+      }
+
+      return actual;
+    }
   }
 }
