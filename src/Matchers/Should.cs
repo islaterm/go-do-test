@@ -1,37 +1,26 @@
 ﻿using System;
 using GoDoTest.Assertions;
-using GoDoTest.Exceptions;
 using static GoDoTest.Assertions.Equality;
 
 namespace GoDoTest.Matchers {
   public static class Should {
     /// <summary>
-    ///   Function that represents the constraint "the value of <c>actual</c> should be <c>expected</c>".
+    ///   Performs a "should be" assertion like: <c>actual</c> should be <c>expected</c>.
+    ///   If <c>expected</c> is an <see cref="IMatcher{T}" />, the the result is evaluated as a "should match" assertion.
     /// </summary>
-    // public static void ShouldBe<T>(this object actual, object expected) {
-    //   // if (actual.GetType()) { }
-    //
-    //   switch (expected) {
-    //     case IMatcher<object> match: {
-    //       ShouldMatch(actual, match);
-    //       break;
-    //     }
-    //     default: {
-    //       AssertionCounter.Inc();
-    //       AreEqual(actual, expected)?.Let(ErrorCollector.CollectOrThrow);
-    //       break;
-    //     }
-    //   }
-    // }
-
-
-    // private static bool InvokeMatcher(object actual, Func<object, bool> matcher) => throw new NotImplementedException();
-
+    /// <seealso cref="ShouldMatch(object,GoDoTest.Matchers.IMatcher{object})" />
+    /// <param name="actual">The value to test.</param>
+    /// <param name="expected">The value or expression to match.</param>
     public static void ShouldBe(this object actual, object expected) {
-      throw new NotImplementedException();
+      if (expected is IMatcher<object> matcher) {
+        actual.ShouldMatch(matcher);
+      } else {
+        AssertionCounter.Inc();
+        AreEqual(actual, expected)?.Let(ErrorCollector.CollectOrThrow);
+      }
     }
-    
-    public static void ShouldBe(this double actual, double expected, double delta = 1e-10) {
+
+    private static void ShouldBe(this double actual, double expected, double delta = 1e-10) {
       var error = AreEqualDouble(actual, expected, delta);
       AssertionCounter.Inc();
     }
@@ -52,6 +41,9 @@ namespace GoDoTest.Matchers {
     }
 
     // public static void ShouldMatch(this object actual, IMatcher<object> expected) => InvokeMatcher(actual, expected);
+
+    private static void ShouldMatch(this object actual, IMatcher<object> matcher) =>
+      throw new NotImplementedException();
 
     public static void ShouldMatch(this string actual, StringMatcher matcher) {
       InvokeStringMatcher(actual, matcher);

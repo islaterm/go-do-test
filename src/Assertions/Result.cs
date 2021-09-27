@@ -1,5 +1,4 @@
 ﻿using System;
-using GoDoTest.Exceptions;
 using GoDoTest.Mpp;
 
 namespace GoDoTest.Assertions {

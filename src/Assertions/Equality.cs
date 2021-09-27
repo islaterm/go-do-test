@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using GoDoTest.Exceptions;
 using GoDoTest.Matchers;
 
 namespace GoDoTest.Assertions {

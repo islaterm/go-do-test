@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Text.RegularExpressions;
-using GoDoTest.Exceptions;
 using static GoDoTest.Assertions.Equality;
 
 namespace GoDoTest.Matchers {
