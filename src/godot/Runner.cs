@@ -12,8 +12,8 @@ namespace GoDoTest.godot {
     /// </summary>
     public override void _Ready() {
       var _ = new FunSpec(() => {
-        Test("length should return size of string", () => "hello".Length.ShouldBe(5));
-        Test("startsWith should test for a prefix", () => "world".ShouldMatch(StartWith("woa")));
+        const string name = "Sam";
+        Test("length should return size of string", () => name.ShouldBe("Sam"));
       });
       base._Ready();
     }

@@ -27,6 +27,10 @@ namespace GoDoTest.Matchers {
 
     // private static bool InvokeMatcher(object actual, Func<object, bool> matcher) => throw new NotImplementedException();
 
+    public static void ShouldBe(this object actual, object expected) {
+      throw new NotImplementedException();
+    }
+    
     public static void ShouldBe(this double actual, double expected, double delta = 1e-10) {
       var error = AreEqualDouble(actual, expected, delta);
       AssertionCounter.Inc();
