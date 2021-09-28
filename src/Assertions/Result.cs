@@ -15,5 +15,16 @@ namespace GoDoTest.Assertions {
     private static AssertionException Failure(string message, Exception cause) =>
       StackTraces.CleanStackTrace(
         Exceptions.CreateAssertionException(ErrorCollector.ClueContextAsString() + message, cause));
+
+    public class Expected {
+      private readonly string _value;
+      public Expected(string value) => _value = value;
+    }
+
+    public class Actual {
+      private readonly string _value;
+
+      public Actual(string value) => _value = value;
+    }
   }
 }

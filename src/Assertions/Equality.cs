@@ -3,6 +3,7 @@ using System.Collections;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using GoDoTest.Matchers;
+using static GoDoTest.Assertions.Result;
 
 namespace GoDoTest.Assertions {
   /// <summary>
@@ -38,8 +39,8 @@ namespace GoDoTest.Assertions {
     private static Exception AssertDoublesAreEqual(double expected, double actual, double delta) =>
       !(Math.Abs(expected - actual) > delta)
         ? null
-        : new AssertionException(
-          $"Expected {expected.ToString(CultureInfo.InvariantCulture)} but was {actual.ToString(CultureInfo.InvariantCulture)}");
+        : Failure(new Expected(expected.Show()), new Result.Actual(actual.Show()))/*new AssertionException(
+          $"Expected {expected.ToString(CultureInfo.InvariantCulture)} but was {actual.ToString(CultureInfo.InvariantCulture)}")*/;
 
     public class MapEq : IMatcher<IDictionary> {
       public MapEq(IDictionary expected) => throw new NotImplementedException();
