@@ -4,6 +4,7 @@
 
 | Category         | Detail                                     | Version | Status  |
 | ---------------- | ------------------------------------------ | ------- | ------- |
+| feat(assertions) | Hard mode error collection | 0.1.0.4 | WORKING |
 | feat(assertions) | Wrappers for expected and actual results   | 0.1.0.3 | BROKEN  |
 | feat(assertions) | Basic assertion error                      | 0.1.0.2 | BROKEN  |
 | feat(assertions) | Declaration of ShouldBe for objects        | 0.1.0.1 | WORKING |

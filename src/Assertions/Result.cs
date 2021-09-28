@@ -16,6 +16,9 @@ namespace GoDoTest.Assertions {
       StackTraces.CleanStackTrace(
         Exceptions.CreateAssertionException(ErrorCollector.ClueContextAsString() + message, cause));
 
+    public static AssertionException Failure(Expected expected, Actual actual, string prependMessage = "") {
+      throw new NotImplementedException();
+    }
     public class Expected {
       private readonly string _value;
       public Expected(string value) => _value = value;

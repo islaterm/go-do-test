@@ -1,6 +1,7 @@
 ﻿using System;
 using GoDoTest.Assertions;
 using static GoDoTest.Assertions.Equality;
+using static GoDoTest.Assertions.ErrorCollector;
 
 namespace GoDoTest.Matchers {
   public static class Should {
@@ -16,7 +17,7 @@ namespace GoDoTest.Matchers {
         actual.ShouldMatch(matcher);
       } else {
         AssertionCounter.Inc();
-        AreEqual(actual, expected)?.Let(ErrorCollector.CollectOrThrow);
+        AreEqual(actual, expected)?.Let(ErrorCollectorInstance.CollectOrThrow);
       }
     }
 
@@ -53,7 +54,7 @@ namespace GoDoTest.Matchers {
       AssertionCounter.Inc();
       var result = matcher.Test(actual);
       if (!result.Passed) {
-        ErrorCollector.CollectOrThrow(Result.Failure(result.FailureMessage));
+        ErrorCollectorInstance.CollectOrThrow(Result.Failure(result.FailureMessage));
       }
 
       return actual;
