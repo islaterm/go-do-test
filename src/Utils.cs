@@ -11,5 +11,8 @@ namespace GoDoTest {
     public static string Show<T>(this T self) => self == null ? "<null>" : (self as object).ToString();
 
     public static string Invoke(this string s, Func<string> f) => f();
+    public static void Todo(string msg = "") => throw new NotImplementedException(msg);
+
+
   }
 }
