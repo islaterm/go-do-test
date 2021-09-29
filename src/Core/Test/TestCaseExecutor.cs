@@ -1,6 +1,6 @@
 ﻿using System;
 using GoDoTest.Assertions;
-using GoDoTest.Core.Concurrency;
+using GoDoTest.Engine.Dispatchers;
 
 namespace GoDoTest.Core.Test {
   public class TestCaseExecutor {

@@ -1,0 +1,7 @@
+﻿namespace GoDoTest.Engine.Dispatchers {
+  [MustBeDocumented]
+  [ComingSoon]
+  public class ExecutorCoroutineDispatcherFactory : ICoroutineDispatcherFactory {
+    
+  }
+}
