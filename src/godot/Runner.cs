@@ -1,6 +1,6 @@
 using Godot;
 using GoDoTest.Core.Spec;
-using GoDoTest.Core.Spec.Scopes;
+using GoDoTest.Engine.Launchers;
 using GoDoTest.Matchers;
 using static GoDoTest.Core.Spec.Scopes.FunSpecRootContext;
 using static GoDoTest.Matchers.StringMatcher;
@@ -10,8 +10,9 @@ namespace GoDoTest.godot {
     /// <summary>
     ///   Called when the node enters the scene tree for the first time.
     /// </summary>
+    [MustBeDocumented]
     public override void _Ready() {
-      var _ = new FunSpec(() => {
+      Spec = new FunSpec(() => {
         Test("length should return size of string", () => "hello".Length.ShouldBe(5));
         Test("startsWith should test for a prefix", () => "world".ShouldMatch(StartWith("woa")));
       });
@@ -19,11 +20,14 @@ namespace GoDoTest.godot {
     }
   }
 
+  [MustBeDocumented]
   public class TestRunner : Node {
+    protected ISpec Spec;
+
+
+    [MustBeDocumented]
     public override void _Ready() {
-      foreach (var test in AbstractRootContext.Registration) {
-        test.Value();
-      }
+      TestLauncherFactory.TestLauncher(Spec);
     }
   }
 }

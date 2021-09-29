@@ -12,7 +12,10 @@ namespace GoDoTest {
 
     public static string Invoke(this string s, Func<string> f) => f();
     public static void Todo(string msg = "") => throw new NotImplementedException(msg);
-
-
   }
+
+  /// <summary>
+  ///   This attribute marks a method or class that lacks appropriate documentation.
+  /// </summary>
+  public class MustBeDocumentedAttribute : Attribute { }
 }
