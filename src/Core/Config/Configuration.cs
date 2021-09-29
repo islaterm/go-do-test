@@ -5,6 +5,8 @@
   ///   will override the value here.
   /// </summary>
   public class Configuration {
+    public const int Sequential = 1;
+
     private Configuration() { }
 
     /// <summary>

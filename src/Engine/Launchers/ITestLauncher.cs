@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GoDoTest.Core.Config;
 using GoDoTest.Core.Internal;
 using GoDoTest.Core.Spec;
 using GoDoTest.Core.Test;
@@ -15,8 +16,8 @@ namespace GoDoTest.Engine.Launchers {
       var dispatcherFactory = Factories.CoroutineDispatcherFactory();
       var concurrentTests = spec.ResolvedConcurrentTests();
       return concurrentTests == Configuration.Sequential
-        ? SequentialTestLauncher(dispatcherFactory)
-        : ConcurrentTestLauncher(Math.Max(1, concurrentTests), dispatcherFactory);
+        ? (ITestLauncher) new SequentialTestLauncher(dispatcherFactory)
+        : new ConcurrentTestLauncher(Math.Max(1, concurrentTests), dispatcherFactory);
     }
   }
 }

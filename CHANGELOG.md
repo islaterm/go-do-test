@@ -4,6 +4,7 @@
 
 | Category      | Detail                                     | Version | Status  |
 | ------------- | ------------------------------------------ | ------- | ------- |
+| feat(engine)  | Test launcher interface                    | 0.0.8.2 | WORKING |
 | feat(engine)  | Configuration singleton definition         | 0.0.8.1 | BROKEN  |
 | feat(engine)  | String matcher failing test implementation | 0.0.7.3 | WORKING |
 | feat(engine)  | String matcher passing test implementation | 0.0.7.2 | WORKING |
