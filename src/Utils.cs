@@ -11,10 +11,24 @@ namespace GoDoTest {
     // ReSharper disable once RedundantCast
     public static string Show<T>(this T self) => self == null ? "<null>" : (self as object).ToString();
 
-    [MustBeDocumented]
-    [ComingSoon]
-    public static IEnumerable<T> FilterIsInstance<T>(this IEnumerable<object> list) =>
-      throw new NotImplementedException();
+    /// <summary>
+    ///   Returns a list containing all elements that are instances of specified type parameter R.
+    /// </summary>
+    public static IEnumerable<T> FilterIsInstance<T>(this IEnumerable<object> enumerable) =>
+      FilterIsInstanceTo(enumerable, new List<T>());
+
+    /// <summary>
+    ///   Appends all elements that are instances of specified type parameter R to the given <c>destination</c>.
+    /// </summary>
+    private static IEnumerable<T> FilterIsInstanceTo<T>(IEnumerable<object> enumerable, ICollection<T> destination) {
+      foreach (var element in enumerable) {
+        if (element is T e) {
+          destination.Add(e);
+        }
+      }
+
+      return destination;
+    }
 
     [MustBeDocumented]
     [ComingSoon]
