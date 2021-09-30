@@ -6,38 +6,41 @@ namespace GoDoTest.Utils {
   [MustBeDocumented]
   public static class Options {
     [MustBeDocumented]
-    public static Option FirstOrNone<T>(this IEnumerable<T> enumerable) where T : class =>
-      enumerable.FirstOrNull().ToOption();
+    public static Option FirstOrNone<T>(this IEnumerable<T> enumerable) where T : class {
+      return enumerable.FirstOrNull().ToOption();
+    }
 
     [MustBeDocumented]
-    public static Option ToOption(this object self) =>
-      self == null ? (Option) new Option.None() : new Option.Some(self);
+    private static Option ToOption(this object self) {
+      return self == null ? (Option) new Option.None() : new Option.Some(self);
+    }
 
     [MustBeDocumented]
     public class Option {
-      // [MustBeDocumented]
-      // [ComingSoon]
-      // public Option<T> Map(Func<T> func) {
-      //   if (this is None) {
-      //     return this;
-      //   }
-      //
-      //   if (this is Some) {
-      //     return func(this.Value).Some();
-      //   }
-      // }
-      //
-      // public class None : Option<Nothing> {
-      //   public Option<TR> Map<TR>(Func<T, TR> func) {
-      //     return null;
-      //   }
-      // }
+      [MustBeDocumented]
+      public Option Map(Func<object, object> func) {
+        switch (this) {
+          case None _:
+            return this;
+          case Some _:
+            return new Some(func(((Some) this).Value));
+          default:
+            throw new ArgumentException($"Option should be one of [None, Some], but was {GetType()}");
+        }
+      }
+
       [MustBeDocumented]
       public class None : Option { }
 
       [MustBeDocumented]
       public class Some : Option {
-        public Some(object value) => throw new NotImplementedException();
+
+        [MustBeDocumented]
+        public Some(object value) {
+          Value = value;
+        }
+
+        public object Value { get; }
       }
     }
   }

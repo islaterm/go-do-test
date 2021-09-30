@@ -16,10 +16,12 @@ namespace GoDoTest.Engine.Dispatchers {
         .GetOrElse(DefaultCoroutineDispatcherFactory);
     }
 
-    private static ExecutorCoroutineDispatcherFactory DefaultCoroutineDispatcherFactory() =>
+    private static ExecutorCoroutineDispatcherFactory DefaultCoroutineDispatcherFactory() {
       throw new NotImplementedException();
+    }
 
-    private static ICoroutineDispatcherFactory MakeFactory(ICoroutineDispatcherFactoryExtension extension) =>
-      extension.Factory();
+    private static ICoroutineDispatcherFactory MakeFactory(ICoroutineDispatcherFactoryExtension extension) {
+      return extension.Factory();
+    }
   }
 }

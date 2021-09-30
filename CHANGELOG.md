@@ -4,6 +4,7 @@
 
 | Category      | Detail                                     | Version | Status  |
 | ------------- | ------------------------------------------ | ------- | ------- |
+| feat(engine)  | Option class                               | 0.0.8.5 | BROKEN  |
 | feat(engine)  | FilterIsInstance                           | 0.0.8.4 | WORKING |
 | feat(engine)  | Coroutine dispatcher factory               | 0.0.8.3 | WORKING |
 | feat(engine)  | Test launcher interface                    | 0.0.8.2 | WORKING |
