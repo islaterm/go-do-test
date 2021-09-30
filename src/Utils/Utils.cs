@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GoDoTest {
+namespace GoDoTest.Ops {
   public static class Utils {
     /// <summary>
     ///   Calls the specified function block with <c>this</c> value as its argument and returns its result.
@@ -30,9 +30,17 @@ namespace GoDoTest {
       return destination;
     }
 
-    [MustBeDocumented]
-    [ComingSoon]
-    public static TR Map<TI, TR>(this TI self, Func<TI, TR> func) => throw new NotImplementedException();
+    // [MustBeDocumented]
+    // [ComingSoon]
+    // public static TR Map<TI, TR>(this TI self, Func<TI, TR> func) {
+    //   if (self is None) {
+    //     return self;
+    //   }
+    //
+    //   if (self is Some) {
+    //     return func(self.Value).Some();
+    //   }
+    // }
 
     [MustBeDocumented]
     [ComingSoon]

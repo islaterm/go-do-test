@@ -2,6 +2,7 @@ using Godot;
 using GoDoTest.Core.Spec;
 using GoDoTest.Engine.Launchers;
 using GoDoTest.Matchers;
+using GoDoTest.Ops;
 using static GoDoTest.Core.Spec.Scopes.FunSpecRootContext;
 using static GoDoTest.Matchers.StringMatcher;
 

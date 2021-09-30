@@ -2,6 +2,8 @@
 using System.Linq;
 using GoDoTest.Core.Config;
 using GoDoTest.Core.Extensions;
+using GoDoTest.Ops;
+using GoDoTest.Utils;
 
 namespace GoDoTest.Engine.Dispatchers {
   public static class Factories {
@@ -9,7 +11,7 @@ namespace GoDoTest.Engine.Dispatchers {
       return Configuration.Instance.Extensions()
         .Select(x => (object) x)
         .FilterIsInstance<ICoroutineDispatcherFactoryExtension>()
-        .FirstOrDefault()
+        .FirstOrNone()
         .Map(it => it.Factory())
         .GetOrElse(DefaultCoroutineDispatcherFactory);
     }
